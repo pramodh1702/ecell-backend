@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopverse - Music Streaming App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splashPage" class="page splash active">
+        <img src="music-note-logo.png" alt="Loopverse Logo" class="splash-logo">
+        <div class="splash-title">Loopverse</div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page login">
+        <div class="login-container">
+            <img src="music-note-logo.png" alt="Loopverse Logo" class="login-logo">
+            <h2 class="login-title">Create an account</h2>
+            <p class="login-subtitle">Enter your email to sign up for this app</p>
+            <input type="email" class="input" placeholder="email@domain.com" id="email">
+            <button class="btn" onclick="login()">Sign up with email</button>
+            <div class="divider">or continue with</div>
+            <button class="btn google-btn" onclick="login()">Google</button>
+            <button class="btn guest-btn" onclick="login()">Continue as Guest</button>
+            <div class="terms">By clicking continue, you agree to our Terms of Service and Privacy Policy</div>
+        </div>
+    </div>
+
+    <!-- Library Page -->
+    <div id="libraryPage" class="page library">
+        <div class="header">
+            <button class="nav-btn" onclick="showLogin()">←</button>
+            <div class="title">Music Library</div>
+            <div style="width: 20px;"></div>
+        </div>
+        <div class="tabs">
+            <div class="tab active" onclick="activateTab(this)">Artists</div>
+            <div class="tab" onclick="activateTab(this)">Albums</div>
+            <div class="tab" onclick="activateTab(this)">Songs</div>
+            <div class="tab" onclick="activateTab(this)">Playlists</div>
+        </div>
+        <div class="content">
+            <input type="text" class="search-bar" placeholder="Search artists, albums, songs..." onkeyup="search(this.value)">
+            <div class="artist-grid">
+                <div class="artist-card" onclick="showPlayer('arr')">
+                    <img src="arr.jpeg" alt="A.R. Rahman" class="artist-img">
+                    <div class="artist-name">A.R. Rahman</div>
+                    <div class="artist-genre">Film Music, World</div>
+                    <div class="song-count">150+ songs</div>
+                </div>
+                <div class="artist-card" onclick="showPlayer('ilayaraja')">
+                    <img src="ilayaraja.jpg" alt="Ilayaraja" class="artist-img">
+                    <div class="artist-name">Ilayaraja</div>
+                    <div class="artist-genre">Classical, Film Music</div>
+                    <div class="song-count">1000+ songs</div>
+                </div>
+                <div class="artist-card" onclick="showPlayer('spb')">
+                    <img src="spb.jpg" alt="S.P. Balasubrahmanyam" class="artist-img">
+                    <div class="artist-name">S.P. Balasubrahmanyam</div>
+                    <div class="artist-genre">Playback Singer</div>
+                    <div class="song-count">500+ songs</div>
+                </div>
+                <div class="artist-card" onclick="showPlayer('arr')">
+                    <img src="arr.jpeg" alt="New Artist" class="artist-img">
+                    <div class="artist-name">Trending Artists</div>
+                    <div class="artist-genre">Various Genres</div>
+                    <div class="song-count">50+ songs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Page -->
+    <div id="playerPage" class="page player">
+        <div class="player-header">
+            <button class="nav-btn" onclick="showLibrary()">←</button>
+            <div class="title">Now Playing</div>
+            <button class="nav-btn">⋮</button>
+        </div>
+        <div class="player-content">
+            <img id="currentArt" src="spb.jpg" alt="Album Art" class="album-art">
+            <div id="songTitle" class="song-title">Mannil Indha Kaadhal</div>
+            <div id="songArtist" class="song-artist">S.P. Balasubrahmanyam</div>
+            <div class="progress">
+                <div class="progress-time">01:30</div>
+                <div class="progress-bar" onclick="seekPosition(event)">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-time">04:20</div>
+            </div>
+            <div class="controls">
+                <button class="control-btn" onclick="shuffle()">🔀</button>
+                <button class="control-btn" onclick="prevSong()">⏮</button>
+                <button class="control-btn play-btn" onclick="togglePlay()" id="playBtn">⏸</button>
+                <button class="control-btn" onclick="nextSong()">⏭</button>
+                <button class="control-btn" onclick="toggleRepeat()">🔁</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
